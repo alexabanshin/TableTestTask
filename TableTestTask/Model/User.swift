@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct User {
-    var name: String
-    var lastName: String
-    var birthDate: String
-    var gender: String
+struct User: Codable {
+    var name: String = "..."
+    var lastName: String = "..."
+    var birthDate: String = "..."
+    var gender: String = "..."
 }
 
 enum Gender: String {

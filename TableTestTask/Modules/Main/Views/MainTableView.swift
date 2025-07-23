@@ -9,21 +9,26 @@ import SnapKit
 import UIKit
 
 class MainTableView: BaseTableView {
-    private var user: User = .init(name: "Alexander", lastName: "Abanshin", birthDate: "10.10.1993", gender: "Male")
+    private var user = User() {
+        didSet {
+            reloadData()
+        }
+    }
   
     func configure(with user: User) {
         self.user = user
-        reloadData()
     }
+    
+
 }
 
 extension MainTableView {
     override func setupView() {
         setupTable()
     }
-    
+
     override func constraintViews() {
-        
+
     }
 }
 

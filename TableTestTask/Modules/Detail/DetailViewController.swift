@@ -41,6 +41,7 @@ private extension DetailViewController {
     }
     
     @objc func didTapSave() {
+        StorageManager.shared.save(user: viewModel.user)
         onModelUpdate?(viewModel.user)
         showSaveAlert()
     }

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6DB2C0872E3037BA00481A0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB2C0862E3037BA00481A0C /* AppDelegate.swift */; };
 		6DB2C0892E3037BA00481A0C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB2C0882E3037BA00481A0C /* SceneDelegate.swift */; };
-		6DB2C08B2E3037BA00481A0C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB2C08A2E3037BA00481A0C /* MainViewController.swift */; };
 		6DB2C08E2E3037BA00481A0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DB2C08C2E3037BA00481A0C /* Main.storyboard */; };
 		6DB2C0902E3037BC00481A0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DB2C08F2E3037BC00481A0C /* Assets.xcassets */; };
 		6DB2C0932E3037BC00481A0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DB2C0912E3037BC00481A0C /* LaunchScreen.storyboard */; };
@@ -28,6 +27,8 @@
 		6DB2C0C22E30544F00481A0C /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB2C0C12E30544F00481A0C /* DateCell.swift */; };
 		6DB2C0C42E30546A00481A0C /* GenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB2C0C32E30546A00481A0C /* GenderCell.swift */; };
 		6DB2C0C62E306A1200481A0C /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB2C0C52E306A1200481A0C /* DetailViewModel.swift */; };
+		6DB2C0C82E30A21000481A0C /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB2C0C72E30A21000481A0C /* StorageManager.swift */; };
+		6DB2C0CA2E30CFA200481A0C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB2C0C92E30CFA200481A0C /* MainViewController.swift */; };
 		A52CDE8F5F47A5BEB615702C /* Pods_TableTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA189FAAB42D2542CE0F12F /* Pods_TableTestTask.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +37,6 @@
 		6DB2C0832E3037BA00481A0C /* TableTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DB2C0862E3037BA00481A0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6DB2C0882E3037BA00481A0C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6DB2C08A2E3037BA00481A0C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6DB2C08D2E3037BA00481A0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6DB2C08F2E3037BC00481A0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DB2C0922E3037BC00481A0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,6 +56,8 @@
 		6DB2C0C12E30544F00481A0C /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		6DB2C0C32E30546A00481A0C /* GenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderCell.swift; sourceTree = "<group>"; };
 		6DB2C0C52E306A1200481A0C /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		6DB2C0C72E30A21000481A0C /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		6DB2C0C92E30CFA200481A0C /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7FA189FAAB42D2542CE0F12F /* Pods_TableTestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TableTestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2019076DFA0994CB76BC722 /* Pods-TableTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableTestTask.release.xcconfig"; path = "Target Support Files/Pods-TableTestTask/Pods-TableTestTask.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				6DB2C0A52E303AAC00481A0C /* Main */,
+				6DB2C0C92E30CFA200481A0C /* MainViewController.swift */,
 				6DB2C0A62E303AB200481A0C /* Detail */,
 			);
 			path = Modules;
@@ -178,6 +181,7 @@
 		6DB2C0A22E30394900481A0C /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				6DB2C0C72E30A21000481A0C /* StorageManager.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -186,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				6DB2C0AE2E303EB800481A0C /* Views */,
-				6DB2C08A2E3037BA00481A0C /* MainViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -376,14 +379,15 @@
 				6DB2C0BD2E3053AF00481A0C /* DetailTableView.swift in Sources */,
 				6DB2C0C02E30540B00481A0C /* NameCell.swift in Sources */,
 				6DB2C0AB2E303DD000481A0C /* MainTableView.swift in Sources */,
+				6DB2C0CA2E30CFA200481A0C /* MainViewController.swift in Sources */,
 				6DB2C0AD2E303DE300481A0C /* BaseTableView.swift in Sources */,
 				6DB2C0A92E303ADF00481A0C /* BaseViewController.swift in Sources */,
 				6DB2C0C22E30544F00481A0C /* DateCell.swift in Sources */,
 				6DB2C0B62E3045D900481A0C /* UIView + Ext.swift in Sources */,
+				6DB2C0C82E30A21000481A0C /* StorageManager.swift in Sources */,
 				6DB2C0C42E30546A00481A0C /* GenderCell.swift in Sources */,
 				6DB2C0A42E30395E00481A0C /* User.swift in Sources */,
 				6DB2C0B22E303EF800481A0C /* BaseCell.swift in Sources */,
-				6DB2C08B2E3037BA00481A0C /* MainViewController.swift in Sources */,
 				6DB2C0C62E306A1200481A0C /* DetailViewModel.swift in Sources */,
 				6DB2C0872E3037BA00481A0C /* AppDelegate.swift in Sources */,
 				6DB2C0B42E30402300481A0C /* TableView + Ext.swift in Sources */,

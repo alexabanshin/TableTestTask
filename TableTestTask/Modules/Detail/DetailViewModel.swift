@@ -12,7 +12,15 @@ protocol DetailViewModelDelegate: AnyObject {
 }
 
 class DetailViewModel {
-    var user = User(name: "ivan", lastName: "ivanovich", birthDate: "1", gender: "2")
+    var user: User
+    
+    init() {
+        if let user = StorageManager.shared.loadUser() {
+            self.user = user
+        } else {
+            user = User()
+        }
+    }
     
     weak var delegate: DetailViewModelDelegate?
     

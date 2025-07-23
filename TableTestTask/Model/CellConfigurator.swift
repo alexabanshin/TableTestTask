@@ -13,13 +13,13 @@ enum CellConfigurator: Int, CaseIterable {
     var title: String {
         switch self {
         case .firstName:
-            return "Имя"
+            return "Name"
         case .lastName:
-            return "Фамилия"
+            return "Last name"
         case .birthDate:
-            return "Дата рождения"
+            return "Birth date"
         case .gender:
-            return "Пол"
+            return "Gender"
         }
     }
     

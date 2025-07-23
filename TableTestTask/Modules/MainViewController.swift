@@ -10,13 +10,25 @@ import UIKit
 
 final class MainViewController: BaseViewController {
      let tableView = MainTableView()
+    private let user: User
     
+    init() {
+        if let user = StorageManager.shared.loadUser() {
+            self.user = user
+        } else {
+            user = User()
+        }
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 extension MainViewController {
     override func setupViews() {
         setupTable()
-
         setupNavigation()
     }
     
@@ -29,6 +41,7 @@ extension MainViewController {
 
 private extension MainViewController {
     func setupTable() {
+        tableView.configure(with: user)
         view.addView(tableView)
     }
     
@@ -41,7 +54,6 @@ private extension MainViewController {
         let vc = DetailViewController()
         vc.onModelUpdate = { [weak self] user in
             self?.tableView.configure(with: user)
-            
         }
         navigationController?.pushViewController(vc, animated: true)
     }
