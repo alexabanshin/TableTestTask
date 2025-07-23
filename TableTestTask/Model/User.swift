@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+struct User {
+    let name: String
+    let lastName: String
+    let birthDate: String
+    let gender: String
+}
+
+enum Gender: String {
+    case notSelected = "Not slected"
+    case male = "Male"
+    case female = "Female"
+}
