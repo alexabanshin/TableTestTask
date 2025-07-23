@@ -10,18 +10,20 @@ import UIKit
 
 class NameCell: BaseCell {
     private let titleLabel = UILabel()
-    private let valueLabel = UILabel()
+    private let valueTextField = UITextField()
+    
+    var onValueUpdate: ((String) -> Void)?
     
     func configure(with configurator: CellConfigurator, value: String) {
         titleLabel.text = configurator.title
-        valueLabel.text = value
+        valueTextField.text = value
     }
 }
 
 extension NameCell {
     override func setupView() {
-        addView(titleLabel)
-        addView(valueLabel)
+        contentView.addView(titleLabel)
+        contentView.addView(valueTextField)
         
         setupTitel()
         setupValue()
@@ -33,7 +35,7 @@ extension NameCell {
             make.leading.equalToSuperview().inset(15)
         }
         
-        valueLabel.snp.makeConstraints { make in
+        valueTextField.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(15)
         }
@@ -46,6 +48,18 @@ private extension NameCell {
     }
     
     func setupValue() {
-        valueLabel.text = "This is a value"
+        valueTextField.placeholder = "Enter value"
+        valueTextField.textAlignment = .right
+        valueTextField.addTarget(self, action: #selector(valueLabelChanged), for: .editingChanged)
+        
     }
+    
+    @objc func valueLabelChanged() {
+        onValueUpdate?(valueTextField.text ?? "No name")
+        
+    }
+    
+  
 }
+
+

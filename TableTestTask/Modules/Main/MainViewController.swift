@@ -9,7 +9,7 @@ import SnapKit
 import UIKit
 
 final class MainViewController: BaseViewController {
-    private let tableView = MainTableView()
+     let tableView = MainTableView()
     
 }
 
@@ -38,7 +38,12 @@ private extension MainViewController {
     }
     
     @objc func didTapEdit() {
-        print("Edit did tap")
+        let vc = DetailViewController()
+        vc.onModelUpdate = { [weak self] user in
+            self?.tableView.configure(with: user)
+            
+        }
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

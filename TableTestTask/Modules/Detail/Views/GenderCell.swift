@@ -14,6 +14,8 @@ class GenderCell: BaseCell {
     private let pickerView = UIPickerView()
     private let pickerOptions = ["Not selected", "Male", "Female"]
     
+    var onValueUpdate: ((String) -> Void)?
+    
     func configure(with configurator: CellConfigurator, value: String) {
         titleLabel.text = configurator.title
         
@@ -22,12 +24,8 @@ class GenderCell: BaseCell {
 
 extension GenderCell {
     override func setupView() {
-        
         contentView.addView(titleLabel)
         contentView.addView(valueTextField)
-        
-
-
         
         setupTitel()
         setupValue()
@@ -52,7 +50,6 @@ private extension GenderCell {
     }
     
     func setupValue() {
-
         valueTextField.placeholder = "Select gender"
         valueTextField.textAlignment = .right
         valueTextField.inputView = pickerView
@@ -78,7 +75,9 @@ extension GenderCell: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        valueTextField.text = pickerOptions[row]
+        let value = pickerOptions[row]
+        valueTextField.text = value
         valueTextField.resignFirstResponder()
+        onValueUpdate?(value)
     }
 }

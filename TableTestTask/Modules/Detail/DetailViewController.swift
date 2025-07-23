@@ -10,6 +10,10 @@ import UIKit
 
 final class DetailViewController: BaseViewController {
     private let tableView = DetailTableView()
+    private let viewModel = DetailViewModel()
+    
+    var onModelUpdate: ((User) -> Void)?
+    
 }
 
 extension DetailViewController {
@@ -27,6 +31,7 @@ extension DetailViewController {
 
 private extension DetailViewController {
     func setupTable() {
+        tableView.configure(with: viewModel)
         view.addView(tableView)
     }
     
@@ -36,7 +41,14 @@ private extension DetailViewController {
     }
     
     @objc func didTapSave() {
-        print("Save taped")
+        onModelUpdate?(viewModel.user)
+        showSaveAlert()
     }
     
+    func showSaveAlert() {
+        let alert = UIAlertController(title: nil, message: "Data saved!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
 }

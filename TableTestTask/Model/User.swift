@@ -8,10 +8,10 @@
 import Foundation
 
 struct User {
-    let name: String
-    let lastName: String
-    let birthDate: String
-    let gender: String
+    var name: String
+    var lastName: String
+    var birthDate: String
+    var gender: String
 }
 
 enum Gender: String {

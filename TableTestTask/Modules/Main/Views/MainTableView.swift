@@ -9,9 +9,12 @@ import SnapKit
 import UIKit
 
 class MainTableView: BaseTableView {
-    private let user: User = .init(name: "Alexander", lastName: "Abanshin", birthDate: "10.10.1993", gender: "Male")
+    private var user: User = .init(name: "Alexander", lastName: "Abanshin", birthDate: "10.10.1993", gender: "Male")
   
-    func configure() {}
+    func configure(with user: User) {
+        self.user = user
+        reloadData()
+    }
 }
 
 extension MainTableView {

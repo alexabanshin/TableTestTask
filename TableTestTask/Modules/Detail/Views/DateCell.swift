@@ -1,5 +1,4 @@
-//
-//  dateCell.swift
+
 //  TableTestTask
 //
 //  Created by Alexander Abanshin on 23.07.25.
@@ -12,9 +11,10 @@ class DateCell: BaseCell {
     private let titleLabel = UILabel()
     private let valueDatePicker = UIDatePicker()
     
+    var onValueUpdate: ((String) -> Void)?
+    
     func configure(with configurator: CellConfigurator, value: String) {
         titleLabel.text = configurator.title
-        
     }
     
 }
@@ -43,16 +43,21 @@ extension DateCell {
 
 private extension DateCell {
     func setupTitel() {
-        titleLabel.text = "This is a title"
+        // set font ect...
     }
     
     func setupValue() {
         valueDatePicker.datePickerMode = .date
         valueDatePicker.preferredDatePickerStyle = .compact
-        valueDatePicker.addTarget(self, action: #selector(didSelectDate), for: .editingDidEnd)
+        valueDatePicker.addTarget(self, action: #selector(didSelectDate), for: . valueChanged)
     }
     
     @objc func didSelectDate() {
-        print("Date was selected")
+        let dateFormater = DateFormatter()
+        dateFormater.dateStyle = .medium
+        dateFormater.timeStyle = .none
+
+        let stringDate = dateFormater.string(from: valueDatePicker.date)
+        onValueUpdate?(stringDate)
     }
 }

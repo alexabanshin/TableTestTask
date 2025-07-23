@@ -7,30 +7,13 @@
 
 import UIKit
 
-class DetailTableView: BaseTableView {
-    private let user: User = .init(name: "Alexander", lastName: "Abanshin", birthDate: "10.10.1993", gender: "Male")
-}
-
-extension DetailTableView {
-    override func setupView() {
-        setupTable()
-    }
-    override func constraintViews() {
-        
+final class DetailTableView: BaseTableView {
+    private var viewModel: DetailViewModel!
+    
+    func configure(with viewModel: DetailViewModel) {
+        self.viewModel = viewModel
     }
 }
-
-private extension DetailTableView {
-    func setupTable() {
-        register(NameCell.self)
-        register(DateCell.self)
-        register(GenderCell.self)
-        
-        dataSource = self
-        delegate = self
-    }
-}
-
 extension DetailTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         CellConfigurator.allCases.count
@@ -44,15 +27,24 @@ extension DetailTableView: UITableViewDataSource {
         switch cellType {
         case .firstName, .lastName:
             let cell = tableView.dequeCell(for: NameCell.self, indexPath: indexPath)
-            cell.configure(with: cellType, value: cellType.value(for: user))
+            cell.configure(with: cellType, value: cellType.value(for: viewModel.user))
+            cell.onValueUpdate = { [weak self] value in
+                self?.viewModel.update(value: value, for: cellType)
+            }
             return cell
         case .birthDate:
             let cell = tableView.dequeCell(for: DateCell.self, indexPath: indexPath)
-            cell.configure(with: cellType, value: cellType.value(for: user))
+            cell.configure(with: cellType, value: cellType.value(for: viewModel.user))
+            cell.onValueUpdate = { [weak self] value in
+                self?.viewModel.update(value: value, for: cellType)
+            }
             return cell
         case .gender:
             let cell = tableView.dequeCell(for: GenderCell.self, indexPath: indexPath)
-            cell.configure(with: cellType, value: cellType.value(for: user))
+            cell.configure(with: cellType, value: cellType.value(for: viewModel.user))
+            cell.onValueUpdate = { [weak self] value in
+                self?.viewModel.update(value: value, for: cellType)
+            }
             return cell
         }
     }
@@ -62,3 +54,13 @@ extension DetailTableView: UITableViewDelegate {
     
 }
 
+extension DetailTableView {
+    override func setupView() {
+        register(NameCell.self)
+        register(DateCell.self)
+        register(GenderCell.self)
+        
+        dataSource = self
+        delegate = self
+    }
+}
