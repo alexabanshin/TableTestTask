@@ -5,6 +5,8 @@
 //  Created by Alexander Abanshin on 23.07.25.
 //
 
+// another comment for testing GIT
+
 import SnapKit
 import UIKit
 
